@@ -4,7 +4,7 @@ function FirstView() {
 	var self = Ti.UI.createView();
 	
 	//label using localization-ready strings from <app dir>/i18n/en/strings.xml
-	var label = Ti.UI.createLabel({
+	/* var label = Ti.UI.createLabel({
 		color:'#000000',
 		text:String.format(L('welcome'),'Booty'),
 		height:'auto',
@@ -16,8 +16,11 @@ function FirstView() {
 	label.addEventListener('click', function(e) {
 		alert(e.source.text);
 	});
+	*/
+	
+	  
 	
 	return self;
-}
+}//end FirstView
 
 module.exports = FirstView;
