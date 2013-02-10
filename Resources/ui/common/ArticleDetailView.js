@@ -1,5 +1,19 @@
 function ArticleDetailView(args) {
 	var self = Ti.UI.createWindow(args);
+	//need to pass articleID to to instantiate 
+	var articleID = args.articleID;
+	
+	//socket business
+	var io = require('socket/socket.io-titanium');
+	var socket = io.connect('169.254.10.100:8080');
+	
+	var chat = socket.of('/chat');
+	chat.emit('join', {
+      channelId: articleID
+    });
+	chat.emit('post', 'some lolz matey!!', 'hotness');
+	
+	
 	var ChatPopover = require('ui/common/ChatPopover');
 	var SharePopover = require('ui/common/SharePopover');
 	
@@ -64,6 +78,10 @@ function ArticleDetailView(args) {
 	
 	self.updateLabel = function(txt) {
 		titleLabel.text = 'you just clicked: ' + txt;
+			chat.emit('join', {
+	      channelId: txt
+	    });
+		chat.emit('post', 'state name', 'hotness');
 	}
 	
 	return self;
