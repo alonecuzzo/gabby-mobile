@@ -1,5 +1,10 @@
 function ArticleDetailView(args) {
 	var self = Ti.UI.createWindow(args);
+	var ChatPopover = require('ui/common/ChatPopover');
+	var SharePopover = require('ui/common/SharePopover');
+	
+	var chatPopover = new ChatPopover();
+	var sharePopover = new SharePopover();
 	
 	var button = Titanium.UI.createButton({
 	   title: 'Toggle Menu',
@@ -14,6 +19,34 @@ function ArticleDetailView(args) {
 	});
 	
 	self.add(button);
+	
+	var chatButton = Titanium.UI.createButton({
+	   title: 'Chat',
+	   top: 10,
+	   width: 100,
+	   height: 50,
+	   left: 300
+	});
+	
+	self.add(chatButton);
+	
+	chatButton.addEventListener('click', function(e){
+		chatPopover.show({view: chatButton});
+	});
+	
+	var shareButton = Titanium.UI.createButton({
+	   title: 'Share',
+	   top: 10,
+	   width: 100,
+	   height: 50,
+	   left: 450
+	});
+	
+	self.add(shareButton);
+	
+	shareButton.addEventListener('click', function(e){
+		sharePopover.show({view: shareButton});
+	});
 	
 	var titleLabel = Titanium.UI.createLabel({
 	    color:'#000',

@@ -2,7 +2,7 @@
 function ApplicationWindow() {
 	//load component dependencies
 	var ArticleListView = require('ui/common/ArticleListView');
-	var ArticleDetailView = require('ui/common/ArticleDetailView')
+	var ArticleDetailView = require('ui/common/ArticleDetailView');
 		
 	//create component instance
 	var self = Ti.UI.createWindow({
