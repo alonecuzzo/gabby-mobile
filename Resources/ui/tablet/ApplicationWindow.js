@@ -1,16 +1,36 @@
 //Application Window Component Constructor
 function ApplicationWindow() {
 	//load component dependencies
-	var FirstView = require('ui/common/FirstView');
+	var ArticleListView = require('ui/common/ArticleListView');
+	var ArticleDetailView = require('ui/common/ArticleDetailView')
 		
 	//create component instance
 	var self = Ti.UI.createWindow({
-		backgroundColor:'#ffffff'
+		backgroundColor:'#f234ff'
 	});
 		
 	//construct UI
-	var firstView = new FirstView();
-	self.add(firstView);
+	var articleListView = new ArticleListView({width:300, left:0});
+	self.add(articleListView);
+	
+	var articleDetailView = new ArticleDetailView({backgroundColor:'#c7c7c7', left:0, isOpen:false});
+	articleDetailView.addEventListener('toggle', function(e){
+		Ti.API.info('open: ' + this.isOpen);
+		if(!this.isOpen) {
+			this.animate({
+				left: 300,
+				duration: 300
+			});
+			this.isOpen = true;
+		} else {
+			this.animate({
+				left: 0,
+				duration: 300
+			});
+			this.isOpen = false;
+		}	
+	});
+	self.add(articleDetailView);
 	
 	return self;
 }
