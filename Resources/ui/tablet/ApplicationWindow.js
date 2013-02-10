@@ -22,7 +22,25 @@ function ApplicationWindow() {
 	//load component dependencies
 	var ArticleListView = require('ui/common/ArticleListView');
 	var ArticleDetailView = require('ui/common/ArticleDetailView');
-		
+	// var HearstService = require('services/HearstService');
+	var GabbbyService = require('services/GabbbyService');
+	
+	//create
+	// var hearstService = new HearstService();
+	var gabbbyService = new GabbbyService();
+	//alert('asdas');
+	// Ti.App.addEventListener('eventHearst', function(e) {
+// 		
+		// Ti.API.info('our stuff: '+ e.json);
+	// });
+	
+	Ti.App.addEventListener('listenGabbby', function(e){
+		//alert(e.json);
+		//Ti.API.info('the stuff'+ e.json);
+	});
+	
+	// Ti.API.info('our service var: ' + thing.lolz);
+	//alert(stuff);
 	//create component instance
 	var self = Ti.UI.createWindow({
 		backgroundColor:'#f234ff'
