@@ -15,6 +15,24 @@ function ArticleDetailView(args) {
 	
 	self.add(button);
 	
+	var titleLabel = Titanium.UI.createLabel({
+	    color:'#000',
+	    height:'auto',
+	    width:'auto',
+	    top:150,
+	    left: 30,
+	    text:'Pick an article!',
+	    textAlign:'center',
+	    font:{fontSize:20,fontWeight:'bold'},
+	    shadowColor:'#eee',shadowOffset:{x:0,y:1}
+	});
+	
+	self.add(titleLabel);
+	
+	self.updateLabel = function(txt) {
+		titleLabel.text = 'you just clicked: ' + txt;
+	}
+	
 	return self;
 }
 

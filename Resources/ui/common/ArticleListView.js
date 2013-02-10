@@ -10,8 +10,12 @@ function ArticleListView(args) {
 		data: rows,
 		selectionStyle:Ti.UI.iPhone.TableViewCellSelectionStyle.NONE
 	});
-	
+
 	self.add(table);
+		
+	table.addEventListener('click', function(e){
+		self.fireEvent('cellPressed', e);
+	});
 	
 	return self;
 }

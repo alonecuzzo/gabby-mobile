@@ -32,6 +32,15 @@ function ApplicationWindow() {
 	});
 	self.add(articleDetailView);
 	
+	articleListView.addEventListener('cellPressed', function(e){
+		articleDetailView.animate({
+			left: 0,
+			duration: 300
+		});
+		articleDetailView.isOpen = false;
+		articleDetailView.updateLabel(e.row.title);
+	});
+	
 	return self;
 }
 
