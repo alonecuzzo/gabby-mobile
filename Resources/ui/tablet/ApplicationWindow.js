@@ -22,7 +22,6 @@ function ApplicationWindow() {
 	
 	// Ti.API.info('our service var: ' + thing.lolz);
 	//alert(stuff);
-		
 	//create component instance
 	var self = Ti.UI.createWindow({
 		backgroundColor:'#f234ff'
