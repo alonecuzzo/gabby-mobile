@@ -1,24 +1,6 @@
 //Application Window Component Constructor
 function ApplicationWindow() {
-	
-	 var url = "http://localhost:3000/users";
-	 var client = Ti.Network.createHTTPClient({
-	     // function called when the response data is available
-	     onload : function(e) {
-	         Ti.API.info("Received text: " + this.responseText);
-	     },
-	     // function called when an error occurs, including a timeout
-	     onerror : function(e) {
-	         Ti.API.debug(e.error);	    
-	     },
-	     timeout : 5000  // in milliseconds
-	 });
-	 // Prepare the connection.
-	 client.open("GET", url);
-	 // Send the request.
-	 client.send(); 
-	
-	
+
 	//load component dependencies
 	var ArticleListView = require('ui/common/ArticleListView');
 	var ArticleDetailView = require('ui/common/ArticleDetailView');
@@ -28,19 +10,7 @@ function ApplicationWindow() {
 	//create
 	// var hearstService = new HearstService();
 	var gabbbyService = new GabbbyService();
-	//alert('asdas');
-	// Ti.App.addEventListener('eventHearst', function(e) {
-// 		
-		// Ti.API.info('our stuff: '+ e.json);
-	// });
-	
-	Ti.App.addEventListener('listenGabbby', function(e){
-		//alert(e.json);
-		//Ti.API.info('the stuff'+ e.json);
-	});
-	
-	// Ti.API.info('our service var: ' + thing.lolz);
-	//alert(stuff);
+	gabbbyService.getOrCreateNewUser();
 	//create component instance
 	var self = Ti.UI.createWindow({
 		backgroundColor:'#f234ff'
@@ -68,6 +38,10 @@ function ApplicationWindow() {
 		}	
 	});
 	self.add(articleDetailView);
+	
+	Ti.App.addEventListener('onUserGetOrCreation', function(e){
+		Ti.App.uid = e.json._id;
+	});
 	
 	articleListView.addEventListener('cellPressed', function(e){
 		articleDetailView.animate({

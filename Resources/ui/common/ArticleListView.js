@@ -15,9 +15,9 @@ function ArticleListView(args) {
 		for(var i = 0; i <=json.items.length; i++) {
 			var article = json.items[i];
 			if(article){
-			var artId = article.id;
-			Ti.API.info('artId: '+artId);
-			rows.push(Ti.UI.createTableViewRow({title:'sosksandak #'+i, font:{fontWeight: 'bold'}}));
+				var artId = article.id;
+				Ti.API.info('artId: '+artId);
+				rows.push(Ti.UI.createTableViewRow({title:'sosksandak #'+i, font:{fontWeight: 'bold'}}));
 			}
 		}
 		

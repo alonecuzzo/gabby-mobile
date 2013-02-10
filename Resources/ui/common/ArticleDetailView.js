@@ -11,7 +11,7 @@ function ArticleDetailView(args) {
 	chat.emit('join', {
       channelId: articleID
     });
-	chat.emit('post', 'some lolz matey!!', 'hotness');
+	chat.emit('post', 'some lolz matey!!', 'user' + Ti.App.uid);
 	
 	
 	var ChatPopover = require('ui/common/ChatPopover');
@@ -78,11 +78,34 @@ function ArticleDetailView(args) {
 	
 	self.updateLabel = function(txt) {
 		titleLabel.text = 'you just clicked: ' + txt;
-			chat.emit('join', {
+		chat.emit('join', {
 	      channelId: txt
 	    });
-		chat.emit('post', 'state name', 'hotness');
+		chat.emit('post', 'state name', 'user' + Ti.App.uid);
 	}
+	
+	var textField = Ti.UI.createTextField({
+	  borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+	  color: '#336699',
+	  top: 400, left: 20,
+	  width: 250, height: 60
+	});
+
+	self.add(textField);
+	
+	var sendChatButton = Titanium.UI.createButton({
+	   title: 'Send Chat',
+	   top: 500,
+	   width: 100,
+	   height: 50,
+	   left: 30
+	});
+	
+	self.add(sendChatButton);
+	
+	sendChatButton.addEventListener('click', function(e){
+		chat.emit('post', textField.value, 'user' + Ti.App.uid);
+	});
 	
 	return self;
 }
