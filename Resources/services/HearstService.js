@@ -6,7 +6,7 @@ function HearstService(){
 	self.lolz = 'tehlolz';
 	
 	//self.articles = function() {
-		var url ='http://hearst.api.mashery.com/Article/search?keywords=fashion&_pretty=0&shape=full&start=0&limit=10&sort=publish_date%2Cdesc&total=0&api_key=4mpxekczdccmv22wrf9uqq9j';
+		var url ='http://hearst.api.mashery.com/Article/search?keywords=fashion&_pretty=1&shape=full&article_type_id=1&start=0&limit=10&sort=publish_date%2Cdesc&total=0&api_key=4mpxekczdccmv22wrf9uqq9j';
 		var response, json;
 		
 		var client = Ti.Network.createHTTPClient({
